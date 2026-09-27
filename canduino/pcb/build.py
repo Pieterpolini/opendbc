@@ -649,9 +649,9 @@ print("nets:", len(D.NETS), " pads with net:", sum(1 for p in allpads if p.net))
 # ====================================================================
 #                        WRITE  .kicad_pcb
 # ====================================================================
-PROJECT = "canduino_oled_shield_V000"
+PROJECT = "canduino_oled_shield_V001"
 TITLE = "CANduino OLED gear display shield"
-REV = "V000"
+REV = "V001"
 
 LAYER_DEFS = """  (layers
     (0 "F.Cu" signal)
@@ -755,14 +755,15 @@ text("J1  1:+12V 2:GND 3:CAN-H 4:CAN-L", 101.6, 80.0, 90, 0.9)
 text("5:LIGHT 6:GND 7:A2 8:D6", 103.4, 80.0, 90, 0.9)
 # right strip: J2 legend + board name
 text("J2  1:GND 2:+5V 3:SCL 4:SDA", 126.8, 61.0, 90, 0.9)
-text("GEAR DISPLAY %s" % REV, 124.4, 61.0, 90, 0.9)
+text("RV2=DIM  RV1=spare", 123.4, 61.0, 90, 0.75)
+text("GEAR DISPLAY %s" % REV, 125.1, 61.0, 90, 0.85)
 # OLED connector pin letters
 for lbl, px in (("G", 110.19), ("V", 112.73), ("C", 115.27), ("D", 117.81)):
     text(lbl, px, 57.3, 0, 0.9)
 text("OLED", 114.0, 51.3, 0, 0.9)
 # trimmer legend
-text("DAY", 108.3, 64.7, 90, 0.9)
-text("NIGHT", 108.3, 73.7, 90, 0.9)
+text("RV1 A0", 108.3, 64.7, 90, 0.9)
+text("DIM A1", 108.3, 73.7, 90, 0.9)
 # component identification on the fab layer is handled per footprint;
 # add the full title on the back silkscreen (hidden under the CANduino)
 text("%s %s" % (TITLE, REV), 114.0, 78.0, 90, 1.0, layer="B.SilkS", mirror=True)

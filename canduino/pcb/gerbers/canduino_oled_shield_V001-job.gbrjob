@@ -5,13 +5,13 @@
       "Application": "Pcbnew",
       "Version": "7.0.11+dfsg-1build4"
     },
-    "CreationDate": "2026-09-26T21:49:07+00:00"
+    "CreationDate": "2026-09-27T07:55:07+00:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
-      "Name": "canduino_oled_shield_V000",
+      "Name": "canduino_oled_shield_V001",
       "GUID": "63616e64-7569-46e6-9f5f-6f6c65645f73",
-      "Revision": "V000"
+      "Revision": "V001"
     },
     "Size": {
       "X": 28.1,
@@ -34,47 +34,47 @@
   ],
   "FilesAttributes": [
     {
-      "Path": "canduino_oled_shield_V000-F_Cu.gbr",
+      "Path": "canduino_oled_shield_V001-F_Cu.gbr",
       "FileFunction": "Copper,L1,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "canduino_oled_shield_V000-B_Cu.gbr",
+      "Path": "canduino_oled_shield_V001-B_Cu.gbr",
       "FileFunction": "Copper,L2,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "canduino_oled_shield_V000-F_Paste.gbr",
+      "Path": "canduino_oled_shield_V001-F_Paste.gbr",
       "FileFunction": "SolderPaste,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "canduino_oled_shield_V000-B_Paste.gbr",
+      "Path": "canduino_oled_shield_V001-B_Paste.gbr",
       "FileFunction": "SolderPaste,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "canduino_oled_shield_V000-F_Silkscreen.gbr",
+      "Path": "canduino_oled_shield_V001-F_Silkscreen.gbr",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "canduino_oled_shield_V000-B_Silkscreen.gbr",
+      "Path": "canduino_oled_shield_V001-B_Silkscreen.gbr",
       "FileFunction": "Legend,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "canduino_oled_shield_V000-F_Mask.gbr",
+      "Path": "canduino_oled_shield_V001-F_Mask.gbr",
       "FileFunction": "SolderMask,Top",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "canduino_oled_shield_V000-B_Mask.gbr",
+      "Path": "canduino_oled_shield_V001-B_Mask.gbr",
       "FileFunction": "SolderMask,Bot",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "canduino_oled_shield_V000-Edge_Cuts.gbr",
+      "Path": "canduino_oled_shield_V001-Edge_Cuts.gbr",
       "FileFunction": "Profile",
       "FilePolarity": "Positive"
     }

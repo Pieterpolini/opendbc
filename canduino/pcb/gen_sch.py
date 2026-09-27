@@ -6,9 +6,9 @@ import design as D
 
 random.seed(11)
 SYMDIR = "/usr/share/kicad/symbols"
-PROJECT = "canduino_oled_shield_V000"
+PROJECT = "canduino_oled_shield_V001"
 TITLE = "CANduino OLED gear display shield"
-REV = "V000"
+REV = "V001"
 ROOT = str(uuid.UUID(int=random.getrandbits(128), version=4))
 
 def uid():

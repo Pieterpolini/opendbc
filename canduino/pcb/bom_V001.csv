@@ -1,0 +1,19 @@
+Ref,Value,Footprint,Side,Function,Suggested part
+J1,Power/CAN/Light,JST_XH_S8B-XH-A_1x08_P2.50mm_Horizontal,F,"JST S8B-XH-A, right angle, 2.50 mm",JST S8B-XH-A
+J2,OLED I2C,PinHeader_1x04_P2.54mm_Horizontal,F,"1x4 male, right angle, 2.54 mm",2.54mm 1x4 male right angle
+P1,CANduino left row,PinSocket_1x16_P2.54mm_Vertical,B,"1x16 female socket, bottom side",generic
+P2,CANduino right row,PinSocket_1x16_P2.54mm_Vertical,B,"1x16 female socket, bottom side",generic
+F1,0.5A PTC,Fuse_1206_3216Metric,F,"PTC resettable fuse, 1206, Ihold 0.5 A, 60 V",Littelfuse 1206L050YR
+D1,SS34,D_SMA,F,"Schottky 40 V / 3 A, SMA, reverse-polarity series diode",SS34 / SK34A
+D2,SMBJ24A pin1=K,D_SMB,F,"Unidirectional TVS 24 V, SMB, pin 1 = cathode (band)",SMBJ24A
+D3,1N4148W,D_SOD-123,F,"Reverse protection across the opto LED, SOD-123",1N4148W
+U1,PC817,DIP-4_W7.62mm,F,"Opto-coupler, DIP-4",PC817 / EL817 / LTV-817
+RV1,10k,Potentiometer_Runtron_RM-065_Vertical,F,"Trimmer RM-065 / 3362P, level 1 = day",Bourns 3362P-1-103LF or RM-065 10k
+RV2,10k,Potentiometer_Runtron_RM-065_Vertical,F,"Trimmer RM-065 / 3362P, level 2 = night",Bourns 3362P-1-103LF or RM-065 10k
+R1,3k3,R_0805_2012Metric,F,"LED series resistor, 0805, >=1/8 W",any 0805 1%
+R2,10k,R_0805_2012Metric,F,"Pull-up for D5, 0805",any 0805 1%
+C1,10uF/50V,C_1210_3225Metric,F,X7R 1210,X7R 50 V
+C2,100nF/50V,C_0805_2012Metric,F,X7R 0805,X7R 50 V
+C3,100nF,C_0805_2012Metric,F,X7R 0805,X7R 50 V
+C4,10uF,C_0805_2012Metric,F,X5R 0805,X5R/X7R 16 V
+C5,1uF,C_0805_2012Metric,F,"Filters PWM dimming on the lighting feed, 0805",X7R 16 V

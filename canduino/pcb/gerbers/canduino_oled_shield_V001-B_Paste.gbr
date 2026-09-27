@@ -1,12 +1,12 @@
 %TF.GenerationSoftware,KiCad,Pcbnew,7.0.11+dfsg-1build4*%
-%TF.CreationDate,2026-09-26T21:49:07+00:00*%
-%TF.ProjectId,canduino_oled_shield_V000,63616e64-7569-46e6-9f5f-6f6c65645f73,V000*%
+%TF.CreationDate,2026-09-27T07:55:07+00:00*%
+%TF.ProjectId,canduino_oled_shield_V001,63616e64-7569-46e6-9f5f-6f6c65645f73,V001*%
 %TF.SameCoordinates,Original*%
 %TF.FileFunction,Paste,Bot*%
 %TF.FilePolarity,Positive*%
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 7.0.11+dfsg-1build4) date 2026-09-26 21:49:07*
+G04 Created by KiCad (PCBNEW 7.0.11+dfsg-1build4) date 2026-09-27 07:55:07*
 %MOMM*%
 %LPD*%
 G01*
