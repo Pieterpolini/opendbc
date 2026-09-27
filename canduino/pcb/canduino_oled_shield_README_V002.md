@@ -15,11 +15,11 @@ for the MaxxECU / Dodge 8HP gear display (CAN package `0x700`).
 
 | Item | Value |
 |---|---|
-| Outline | 28.0 × 62.0 mm, 2 mm corner radius |
+| Outline | 28.0 × 66.0 mm, 2 mm corner radius |
 | Layers | 2 (F.Cu / B.Cu), 1.6 mm FR4, 1 oz |
 | Track width | 0.4 mm signal, 0.6 mm power |
 | Clearance | 0.25 mm (design rule 0.2 mm) |
-| Vias | 17 × Ø0.8 mm pad / Ø0.4 mm drill |
+| Vias | 19 × Ø0.8 mm pad / Ø0.4 mm drill |
 | Drill sizes | 0.40 / 0.80 / 0.95 / 1.00 mm |
 | Ground | Solid pour on B.Cu, thermal relief on all THT ground pads |
 | Mounting holes | none (held by the 32-pin socket) |
@@ -40,7 +40,7 @@ for the MaxxECU / Dodge 8HP gear display (CAN package `0x700`).
 | 7 | spare | A2 | free analogue/digital input |
 | 8 | spare | D6 | free digital I/O |
 
-### J2 — OLED (1×4 male pin header, right angle, 2.54 mm)
+### J2 — OLED (JST XH 4-pin, right angle, 2.50 mm, latched + keyed)
 
 | Pin | Net | CANduino |
 |---|---|---|
@@ -49,8 +49,11 @@ for the MaxxECU / Dodge 8HP gear display (CAN package `0x700`).
 | 3 | SCL | A5 (left row pin 9) |
 | 4 | SDA | A4 (left row pin 8) |
 
-Use a ready-made 4-way female–female flat cable. Fit the **same right-angle 1×4 header
-on the OLED module** so both cable ends run flat.
+Use a ready-made **JST XH 4-pin double-ended cable**. Fit an XH header on the OLED module
+as well: **B4B-XH-A** (straight) or **S4B-XH-A** (right angle). The XH pin span for 4 pins
+is 7.50 mm against the module's 7.62 mm hole spacing — 0.12 mm over four Ø1.0 mm holes,
+which fits without force. A Dupont housing does **not** mate with an XH header, so both
+ends need the XH part.
 
 > **Check before you plug in:** J2 is wired GND / +5V / SCL / SDA. Not every 1.3" module
 > uses that order — some are VCC / GND / SCL / SDA. Read the silkscreen on your own
@@ -132,7 +135,7 @@ noise cannot make the display flicker.
 | Ref | Value | Package | Side | Suggested part |
 |---|---|---|---|---|
 | J1 | 8-pin JST XH, right angle | S8B-XH-A | top | JST S8B-XH-A |
-| J2 | 1×4 male header, right angle | 2.54 mm | top | generic |
+| J2 | JST XH 4-pin, right angle | S4B-XH-A | top | JST S4B-XH-A |
 | P1, P2 | 1×16 female socket | 2.54 mm | **bottom** | generic |
 | F1 | PTC 0.5 A hold / 60 V | 1206 | top | Littelfuse 1206L050YR |
 | D1 | Schottky 40 V / 3 A | SMA | top | SS34 |
@@ -150,7 +153,8 @@ noise cannot make the display flicker.
 | C5 | 1 µF X7R | 0805 | top | — |
 
 Also needed: two 1×16 male pin headers on the CANduino itself (if not already fitted),
-one 1×4 right-angle male header for the OLED module, and a 4-way female–female cable.
+one JST XH 4-pin header for the OLED module (B4B-XH-A or S4B-XH-A), and a ready-made
+JST XH 4-pin double-ended cable, 20 cm or shorter.
 
 ## 7. Assembly order
 
@@ -190,9 +194,10 @@ impedance, no castellations, no special requirements.
 | Board size 43 × 18 mm, pitch 2.54 mm | **verified** — v4.5 drawing |
 | Row-to-row spacing 15.24 mm | **NOT verified** — not dimensioned in the drawing; follows from "same pin arrangement as the Nano" |
 | J2 pin order matches your specific OLED module | **NOT verified** — depends on the module |
+| XH 4-pin (7.50 mm span) fits the OLED's 2.54 mm holes (7.62 mm) | **NOT verified on hardware** — 0.12 mm over four Ø1.0 mm holes, geometrically fine |
 | Firmware V013 compiles for AVR / fits in flash | **NOT verified** — no AVR toolchain here; syntax checked only |
 | Brightness behaviour on the bench and in the car | **NOT verified** |
-| MCP crystal: V013 ships with `MCP_8MHZ` | **matches the board that works today.** If the custom 16 MHz board goes in, change line 18 to `MCP_16MHZ` |
+| MCP crystal: V013 ships with `MCP_8MHZ` | **matches the board that works today.** If the custom 16 MHz board goes in, change line 23 to `MCP_16MHZ` |
 | Mechanical fit in the car, cable routing | **NOT verified** |
 
 **Still worth measuring before ordering:** the centre-to-centre distance between the two
