@@ -66,7 +66,8 @@ constexpr uint8_t TEMP_WARN = 100;   // degrees C at which the screen starts to 
 // RV1 on A0 is not used by default (full brightness is fixed). To make the
 // bright level adjustable as well, replace CONTRAST_FULL in updateBrightness()
 // with:  map(analogRead(POT_BRIGHT), 0, 1023, 1, 255)
-constexpr uint8_t  LIGHT_PIN      = 5;     // opto collector, 10k pull-up on the PCB
+constexpr uint8_t  LIGHT_PIN      = 5;     // opto collector; 10k pull-up on the PCB
+                                           // plus the internal pull-up, see setup()
 constexpr uint8_t  POT_DIM        = A1;    // RV2 - dimmed level
 constexpr uint8_t  POT_BRIGHT     = A0;    // RV1 - spare
 constexpr uint8_t  CONTRAST_FULL  = 255;
@@ -282,7 +283,11 @@ void setup() {
 
   tft.begin(SH1106_SWITCHCAPVCC, SCREEN_ADDRESS, true);
 
-  pinMode(LIGHT_PIN, INPUT);   // external 10k pull-up sits on the shield
+  // INPUT_PULLUP, not INPUT: without the shield the pin would float and the
+  // display could dim at random. The internal pull-up (20-50k) keeps it high,
+  // so this sketch also runs on a bare Canduino at full brightness. With the
+  // shield fitted the external 10k dominates and the opto still pulls it low.
+  pinMode(LIGHT_PIN, INPUT_PULLUP);
   analogRead(POT_DIM);         // throw the first conversion away
   updateBrightness();          // splash already comes up at the right level
 
