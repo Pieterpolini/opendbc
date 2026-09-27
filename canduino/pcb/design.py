@@ -2,7 +2,7 @@
 
 # ---------------------------------------------------------------- board
 BX0, BY0 = 100.0, 50.0
-BW, BH = 28.0, 62.0
+BW, BH = 28.0, 66.0
 BX1, BY1 = BX0 + BW, BY0 + BH
 CX = BX0 + BW / 2.0                      # 114.0
 
@@ -28,7 +28,7 @@ NC = None
 PARTS = {}
 
 SILK_REF = {"J1", "J2"}
-REF_OFF = {"J1": 11.5}
+REF_OFF = {"J1": 11.5, "J2": 10.0}
 
 def add(ref, lib_id, value, fp, x, y, rot, layer, nets, sx, sy, desc="", exclude_bom=False):
     PARTS[ref] = dict(ref=ref, lib_id=lib_id, value=value, fp=fp, x=x, y=y, rot=rot,
@@ -39,16 +39,16 @@ def add(ref, lib_id, value, fp, x, y, rot, layer, nets, sx, sy, desc="", exclude
 # --- connectors -------------------------------------------------------
 add("J1", "Connector_Generic:Conn_01x08", "Power/CAN/Light",
     "Connector_JST:JST_XH_S8B-XH-A_1x08_P2.50mm_Horizontal",
-    122.75, 109.5, 180, "F.Cu",
+    122.75, 113.5, 180, "F.Cu",
     {1: "+12V_IN", 2: "GND", 3: "CAN_H", 4: "CAN_L",
      5: "LIGHT_IN", 6: "GND", 7: "SPARE_A2", 8: "SPARE_D6"},
     40, 40, "JST S8B-XH-A, right angle, 2.50 mm")
 
 add("J2", "Connector_Generic:Conn_01x04", "OLED I2C",
-    "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Horizontal",
-    110.19, 55.0, 90, "F.Cu",
+    "Connector_JST:JST_XH_S4B-XH-A_1x04_P2.50mm_Horizontal",
+    110.25, 52.5, 0, "F.Cu",
     {1: "GND", 2: "+5V", 3: "SCL", 4: "SDA"},
-    40, 90, "1x4 male, right angle, 2.54 mm")
+    40, 90, "JST S4B-XH-A, right angle, 2.50 mm, latched and keyed")
 
 add("P1", "Connector_Generic:Conn_01x16", "CANduino left row",
     "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical",
@@ -80,36 +80,36 @@ add("C2", "Device:C", "100nF/50V", "Capacitor_SMD:C_0805_2012Metric",
 
 # --- 5 V decoupling ---------------------------------------------------
 add("C3", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
-    117.9, 88.0, 0, "F.Cu", {1: "+5V", 2: "GND"}, 155, 160, "X7R 0805")
+    117.9, 89.0, 0, "F.Cu", {1: "+5V", 2: "GND"}, 155, 160, "X7R 0805")
 add("C4", "Device:C", "10uF", "Capacitor_SMD:C_0805_2012Metric",
-    117.9, 91.0, 0, "F.Cu", {1: "+5V", 2: "GND"}, 175, 160, "X5R 0805")
+    117.9, 92.0, 0, "F.Cu", {1: "+5V", 2: "GND"}, 175, 160, "X5R 0805")
 
 # --- brightness trimmers ---------------------------------------------
 add("RV1", "Device:R_Potentiometer_Trim", "10k",
     "Potentiometer_THT:Potentiometer_Runtron_RM-065_Vertical",
-    110.5, 62.5, 0, "F.Cu", {1: "+5V", 2: "BRIGHT_DAY", 3: "GND"}, 60, 100,
+    110.5, 64.5, 0, "F.Cu", {1: "+5V", 2: "BRIGHT_DAY", 3: "GND"}, 60, 100,
     "Trimmer RM-065 / 3362P, level 1 = day")
 add("RV2", "Device:R_Potentiometer_Trim", "10k",
     "Potentiometer_THT:Potentiometer_Runtron_RM-065_Vertical",
-    110.5, 71.5, 0, "F.Cu", {1: "+5V", 2: "BRIGHT_NIGHT", 3: "GND"}, 90, 100,
+    110.5, 73.5, 0, "F.Cu", {1: "+5V", 2: "BRIGHT_NIGHT", 3: "GND"}, 90, 100,
     "Trimmer RM-065 / 3362P, level 2 = night")
 
 # --- lighting input opto-coupler --------------------------------------
 add("R1", "Device:R", "3k3", "Resistor_SMD:R_0805_2012Metric",
-    113.5, 88.0, 0, "F.Cu", {1: "LIGHT_IN", 2: "LIGHT_A"}, 60, 220,
+    113.5, 89.0, 0, "F.Cu", {1: "LIGHT_IN", 2: "LIGHT_A"}, 60, 220,
     "LED series resistor, 0805, >=1/8 W")
 add("D3", "Device:D", "1N4148W", "Diode_SMD:D_SOD-123",
-    113.5, 91.0, 0, "F.Cu", {1: "LIGHT_A", 2: "GND"}, 80, 225,
+    113.5, 92.0, 0, "F.Cu", {1: "LIGHT_A", 2: "GND"}, 80, 225,
     "Reverse protection across the opto LED, SOD-123")
 add("U1", "Isolator:PC817", "PC817", "Package_DIP:DIP-4_W7.62mm",
-    110.0, 82.0, 0, "F.Cu",
+    110.0, 83.0, 0, "F.Cu",
     {1: "LIGHT_A", 2: "GND", 3: "GND", 4: "LIGHT_D5"}, 110, 220,
     "Opto-coupler, DIP-4")
 add("R2", "Device:R", "10k", "Resistor_SMD:R_0805_2012Metric",
-    113.5, 94.0, 0, "F.Cu", {1: "+5V", 2: "LIGHT_D5"}, 145, 215,
+    113.5, 95.0, 0, "F.Cu", {1: "+5V", 2: "LIGHT_D5"}, 145, 215,
     "Pull-up for D5, 0805")
 add("C5", "Device:C", "1uF", "Capacitor_SMD:C_0805_2012Metric",
-    117.9, 94.0, 0, "F.Cu", {1: "LIGHT_D5", 2: "GND"}, 165, 220,
+    117.9, 95.0, 0, "F.Cu", {1: "LIGHT_D5", 2: "GND"}, 165, 220,
     "Filters PWM dimming on the lighting feed, 0805")
 
 # ---------------------------------------------------------------- nets
