@@ -138,7 +138,7 @@ def place(part):
 footprints = []
 allpads = []
 for ref in ["P1", "P2", "J1", "J2", "F1", "D1", "D2", "C1", "C2",
-            "C3", "C4", "RV1", "RV2", "R1", "D3", "U1", "R2", "C5"]:
+            "C3", "C4", "RV1", "RV2", "R1", "D3", "U1", "R2", "C5", "C6", "C7"]:
     part = D.PARTS[ref]
     fp, pads = place(part)
     footprints.append((ref, fp))
@@ -649,9 +649,9 @@ print("nets:", len(D.NETS), " pads with net:", sum(1 for p in allpads if p.net))
 # ====================================================================
 #                        WRITE  .kicad_pcb
 # ====================================================================
-PROJECT = "canduino_oled_shield_V002"
+PROJECT = "canduino_oled_shield_V003"
 TITLE = "CANduino OLED gear display shield"
-REV = "V002"
+REV = "V003"
 
 LAYER_DEFS = """  (layers
     (0 "F.Cu" signal)

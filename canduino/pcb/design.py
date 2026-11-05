@@ -108,6 +108,12 @@ add("U1", "Isolator:PC817", "PC817", "Package_DIP:DIP-4_W7.62mm",
 add("R2", "Device:R", "10k", "Resistor_SMD:R_0805_2012Metric",
     113.5, 95.0, 0, "F.Cu", {1: "+5V", 2: "LIGHT_D5"}, 145, 215,
     "Pull-up for D5, 0805")
+add("C6", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
+    118.4, 69.5, 90, "F.Cu", {1: "BRIGHT_DAY", 2: "GND"}, 132, 115,
+    "Noise filter on the RV1 wiper, 0805")
+add("C7", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
+    118.4, 78.5, 90, "F.Cu", {1: "BRIGHT_NIGHT", 2: "GND"}, 172, 115,
+    "Noise filter on the RV2 wiper, 0805")
 add("C5", "Device:C", "1uF", "Capacitor_SMD:C_0805_2012Metric",
     117.9, 95.0, 0, "F.Cu", {1: "LIGHT_D5", 2: "GND"}, 165, 220,
     "Filters PWM dimming on the lighting feed, 0805")
