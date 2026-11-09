@@ -649,9 +649,9 @@ print("nets:", len(D.NETS), " pads with net:", sum(1 for p in allpads if p.net))
 # ====================================================================
 #                        WRITE  .kicad_pcb
 # ====================================================================
-PROJECT = "canduino_oled_shield_V003"
+PROJECT = "canduino_oled_shield_V004"
 TITLE = "CANduino OLED gear display shield"
-REV = "V003"
+REV = "V004"
 
 LAYER_DEFS = """  (layers
     (0 "F.Cu" signal)
