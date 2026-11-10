@@ -41,7 +41,7 @@ add("J1", "Connector_Generic:Conn_01x08", "Power/CAN/Light",
     "Connector_JST:JST_XH_S8B-XH-A_1x08_P2.50mm_Horizontal",
     122.75, 113.5, 180, "F.Cu",
     {1: "+12V_IN", 2: "GND", 3: "CAN_H", 4: "CAN_L",
-     5: "LIGHT_IN", 6: "GND", 7: "SPARE_A2", 8: "SPARE_D6"},
+     5: "LIGHT_IN", 6: "+5V", 7: "P_OIL", 8: "T_OIL"},
     40, 40, "JST S8B-XH-A, right angle, 2.50 mm")
 
 add("J2", "Connector_Generic:Conn_01x04", "OLED I2C",
@@ -53,14 +53,14 @@ add("J2", "Connector_Generic:Conn_01x04", "OLED I2C",
 add("P1", "Connector_Generic:Conn_01x16", "CANduino left row",
     "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical",
     P1X, PIN1Y, 0, "B.Cu",
-    {4: "BRIGHT_DAY", 5: "BRIGHT_NIGHT", 6: "SPARE_A2", 8: "SDA", 9: "SCL",
-     12: "+5V", 14: "GND", 15: "VIN", 16: "CAN_H"},
+    {4: "BRIGHT_DAY", 5: "BRIGHT_NIGHT", 6: "P_OIL_ADC", 7: "T_OIL_ADC",
+     8: "SDA", 9: "SCL", 12: "+5V", 14: "GND", 15: "VIN", 16: "CAN_H"},
     130, 40, "1x16 female socket, bottom side")
 
 add("P2", "Connector_Generic:Conn_01x16", "CANduino right row",
     "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical",
     P2X, PIN1Y, 0, "B.Cu",
-    {7: "SPARE_D6", 8: "LIGHT_D5", 12: "GND", 16: "CAN_L"},
+    {8: "LIGHT_D5", 12: "GND", 16: "CAN_L"},
     130, 100, "1x16 female socket, bottom side")
 
 # --- 12 V input protection (right edge strip) -------------------------
@@ -114,6 +114,25 @@ add("C6", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
 add("C7", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
     118.4, 78.5, 90, "F.Cu", {1: "BRIGHT_NIGHT", 2: "GND"}, 172, 115,
     "Noise filter on the RV2 wiper, 0805")
+# --- oil pressure / temperature sensor interface (Bosch PST-F 1 class) ----
+add("R3", "Device:R", "2k2", "Resistor_SMD:R_0805_2012Metric",
+    102.6, 97.0, 90, "F.Cu", {1: "+5V", 2: "T_OIL"}, 60, 265,
+    "NTC pull-up - VALUE TO BE CONFIRMED against the sensor datasheet")
+add("R4", "Device:R", "4k7", "Resistor_SMD:R_0805_2012Metric",
+    102.6, 92.0, 90, "F.Cu", {1: "P_OIL", 2: "P_OIL_ADC"}, 95, 265,
+    "Series resistor, limits fault current into the ADC pin to 1.5 mA")
+add("R5", "Device:R", "4k7", "Resistor_SMD:R_0805_2012Metric",
+    102.6, 87.0, 90, "F.Cu", {1: "T_OIL", 2: "T_OIL_ADC"}, 95, 300,
+    "Series resistor, limits fault current into the ADC pin to 1.5 mA")
+add("C8", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
+    102.6, 82.0, 90, "F.Cu", {1: "P_OIL_ADC", 2: "GND"}, 118, 270,
+    "ADC filter, 1.6 kHz with R4")
+add("C9", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
+    102.6, 77.0, 90, "F.Cu", {1: "T_OIL_ADC", 2: "GND"}, 118, 305,
+    "ADC filter, 1.6 kHz with R5")
+add("C10", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
+    102.6, 72.0, 90, "F.Cu", {1: "+5V", 2: "GND"}, 150, 265,
+    "Decoupling for the 5 V sent out to the sensor")
 add("C5", "Device:C", "1uF", "Capacitor_SMD:C_0805_2012Metric",
     117.9, 95.0, 0, "F.Cu", {1: "LIGHT_D5", 2: "GND"}, 165, 220,
     "Filters PWM dimming on the lighting feed, 0805")
@@ -121,7 +140,7 @@ add("C5", "Device:C", "1uF", "Capacitor_SMD:C_0805_2012Metric",
 # ---------------------------------------------------------------- nets
 NETS = ["GND", "+5V", "VIN", "+12V_IN", "V_FUSED", "CAN_H", "CAN_L",
         "SCL", "SDA", "BRIGHT_DAY", "BRIGHT_NIGHT", "LIGHT_IN", "LIGHT_A",
-        "LIGHT_D5", "SPARE_A2", "SPARE_D6"]
+        "LIGHT_D5", "P_OIL", "P_OIL_ADC", "T_OIL", "T_OIL_ADC"]
 
 GND_NET = "GND"
 

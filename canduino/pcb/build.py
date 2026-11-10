@@ -138,7 +138,8 @@ def place(part):
 footprints = []
 allpads = []
 for ref in ["P1", "P2", "J1", "J2", "F1", "D1", "D2", "C1", "C2",
-            "C3", "C4", "RV1", "RV2", "R1", "D3", "U1", "R2", "C5", "C6", "C7"]:
+            "C3", "C4", "RV1", "RV2", "R1", "D3", "U1", "R2", "C5", "C6", "C7",
+            "R3", "R4", "R5", "C8", "C9", "C10"]:
     part = D.PARTS[ref]
     fp, pads = place(part)
     footprints.append((ref, fp))
@@ -477,9 +478,10 @@ def flush(run, net, width):
     claim_path(cells, net)
     return cells
 
-ROUTE_ORDER = ["CAN_H", "CAN_L", "VIN", "V_FUSED", "+12V_IN", "SPARE_A2",
-               "SPARE_D6", "LIGHT_IN", "LIGHT_A", "LIGHT_D5", "SCL", "SDA",
-               "BRIGHT_DAY", "BRIGHT_NIGHT", "+5V", "GND"]
+ROUTE_ORDER = ["CAN_H", "CAN_L", "VIN", "V_FUSED", "+12V_IN", "GND",
+               "LIGHT_IN", "LIGHT_A", "LIGHT_D5", "SCL", "SDA",
+               "P_OIL", "P_OIL_ADC", "T_OIL", "T_OIL_ADC",
+               "BRIGHT_DAY", "BRIGHT_NIGHT", "+5V"]
 POWER_NETS = {"VIN", "V_FUSED", "+12V_IN", "+5V", "GND"}
 
 bynet = {}
@@ -649,9 +651,9 @@ print("nets:", len(D.NETS), " pads with net:", sum(1 for p in allpads if p.net))
 # ====================================================================
 #                        WRITE  .kicad_pcb
 # ====================================================================
-PROJECT = "canduino_oled_shield_V004"
+PROJECT = "canduino_oled_shield_V005"
 TITLE = "CANduino OLED gear display shield"
-REV = "V004"
+REV = "V005"
 
 LAYER_DEFS = """  (layers
     (0 "F.Cu" signal)
@@ -751,8 +753,8 @@ def tw(s, size):
     return len(s) * size * 0.85
 
 # left strip: J1 legend (two vertical columns, centred)
-text("J1  1:+12V 2:GND 3:CAN-H 4:CAN-L", 101.6, 84.0, 90, 0.9)
-text("5:LIGHT 6:GND 7:A2 8:D6", 103.4, 84.0, 90, 0.9)
+text("J1 1:12V 2:GND 3:CANH 4:CANL", 101.3, 61.0, 90, 0.8)
+text("5:LIGHT 6:+5V 7:POIL 8:TOIL", 103.9, 61.0, 90, 0.8)
 # right strip: J2 legend + board name
 text("J2  1:GND 2:+5V 3:SCL 4:SDA", 126.8, 64.0, 90, 0.9)
 text("RV2=DIM  RV1=spare", 123.4, 64.0, 90, 0.75)

@@ -1,0 +1,27 @@
+Ref,Value,Footprint,Side,Function
+J1,Power/CAN/Light,JST_XH_S8B-XH-A_1x08_P2.50mm_Horizontal,F,"JST S8B-XH-A, right angle, 2.50 mm"
+J2,OLED I2C,JST_XH_S4B-XH-A_1x04_P2.50mm_Horizontal,F,"JST S4B-XH-A, right angle, 2.50 mm, latched and keyed"
+P1,CANduino left row,PinSocket_1x16_P2.54mm_Vertical,B,"1x16 female socket, bottom side"
+P2,CANduino right row,PinSocket_1x16_P2.54mm_Vertical,B,"1x16 female socket, bottom side"
+F1,0.5A PTC,Fuse_1206_3216Metric,F,"PTC resettable fuse, 1206, Ihold 0.5 A, 60 V"
+D1,SS34,D_SMA,F,"Schottky 40 V / 3 A, SMA, reverse-polarity series diode"
+D2,SMBJ24A pin1=K,D_SMB,F,"Unidirectional TVS 24 V, SMB, pin 1 = cathode (band)"
+D3,1N4148W,D_SOD-123,F,"Reverse protection across the opto LED, SOD-123"
+U1,PC817,DIP-4_W7.62mm,F,"Opto-coupler, DIP-4"
+RV1,10k,Potentiometer_Runtron_RM-065_Vertical,F,"Trimmer RM-065 / 3362P, level 1 = day"
+RV2,10k,Potentiometer_Runtron_RM-065_Vertical,F,"Trimmer RM-065 / 3362P, level 2 = night"
+R1,3k3,R_0805_2012Metric,F,"LED series resistor, 0805, >=1/8 W"
+R2,10k,R_0805_2012Metric,F,"Pull-up for D5, 0805"
+R3,2k2,R_0805_2012Metric,F,NTC pull-up - VALUE TO BE CONFIRMED against the sensor datasheet
+R4,4k7,R_0805_2012Metric,F,"Series resistor, limits fault current into the ADC pin to 1.5 mA"
+R5,4k7,R_0805_2012Metric,F,"Series resistor, limits fault current into the ADC pin to 1.5 mA"
+C1,10uF/50V,C_1210_3225Metric,F,X7R 1210
+C2,100nF/50V,C_0805_2012Metric,F,X7R 0805
+C3,100nF,C_0805_2012Metric,F,X7R 0805
+C4,10uF,C_0805_2012Metric,F,X5R 0805
+C5,1uF,C_0805_2012Metric,F,"Filters PWM dimming on the lighting feed, 0805"
+C6,100nF,C_0805_2012Metric,F,"Noise filter on the RV1 wiper, 0805"
+C7,100nF,C_0805_2012Metric,F,"Noise filter on the RV2 wiper, 0805"
+C8,100nF,C_0805_2012Metric,F,"ADC filter, 1.6 kHz with R4"
+C9,100nF,C_0805_2012Metric,F,"ADC filter, 1.6 kHz with R5"
+C10,100nF,C_0805_2012Metric,F,Decoupling for the 5 V sent out to the sensor

@@ -6,9 +6,9 @@ import design as D
 
 random.seed(11)
 SYMDIR = "/usr/share/kicad/symbols"
-PROJECT = "canduino_oled_shield_V004"
+PROJECT = "canduino_oled_shield_V005"
 TITLE = "CANduino OLED gear display shield"
-REV = "V004"
+REV = "V005"
 ROOT = str(uuid.UUID(int=random.getrandbits(128), version=4))
 
 def uid():
@@ -27,6 +27,7 @@ SCH = {
     "R1":  (100, 190), "D3":  (124, 197), "U1":  (155, 190),
     "R2":  (196, 183), "C5":  (216, 190),
     "C6":  (132, 118), "C7":  (172, 118),
+    "R3": (60,265), "R4": (95,265), "R5": (95,300), "C8": (118,270), "C9": (118,305), "C10": (150,265),
     "P1":  (330, 85),  "P2":  (330, 185),
 }
 for r, (x, y) in SCH.items():
@@ -38,6 +39,7 @@ SECTIONS = [
     (245, 22, "5 V DECOUPLING", 2.5),
     (95, 100, "OLED BRIGHTNESS TRIMMERS (read on A0 / A1)", 2.5),
     (95, 168, "DASHBOARD LIGHTING INPUT 14.8 V  ->  D5", 2.5),
+    (55, 245, "OIL PRESSURE / TEMPERATURE SENSOR ON J1.7 / J1.8", 2.5),
     (305, 22, "CANduino v4 / v4.5  2 x 16 PIN HEADER", 2.5),
 ]
 NOTES = [
