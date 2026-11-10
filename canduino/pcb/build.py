@@ -139,7 +139,7 @@ footprints = []
 allpads = []
 for ref in ["P1", "P2", "J1", "J2", "F1", "D1", "D2", "C1", "C2",
             "C3", "C4", "RV1", "RV2", "R1", "D3", "U1", "R2", "C5", "C6", "C7",
-            "R3", "R4", "R5", "C8", "C9", "C10"]:
+            "R3", "R4", "R5", "R6", "C8", "C9", "C10"]:
     part = D.PARTS[ref]
     fp, pads = place(part)
     footprints.append((ref, fp))
@@ -651,9 +651,9 @@ print("nets:", len(D.NETS), " pads with net:", sum(1 for p in allpads if p.net))
 # ====================================================================
 #                        WRITE  .kicad_pcb
 # ====================================================================
-PROJECT = "canduino_oled_shield_V005"
+PROJECT = "canduino_oled_shield_V006"
 TITLE = "CANduino OLED gear display shield"
-REV = "V005"
+REV = "V006"
 
 LAYER_DEFS = """  (layers
     (0 "F.Cu" signal)
@@ -747,21 +747,21 @@ def text(s, x, y, rot=0, size=1.0, layer="F.SilkS", mirror=False):
     j = ' (justify mirror)' if mirror else ''
     out.append('  (gr_text "%s" (at %s %s %s) (layer "%s") (tstamp %s)'
                ' (effects (font (size %s %s) (thickness %s))%s))'
-               % (s, n(x), n(y), n(rot), layer, uid(), n(size), n(size), n(size * 0.15), j))
+               % (s, n(x), n(y), n(rot), layer, uid(), n(size), n(size), n(max(0.15, size * 0.15)), j))
 
 def tw(s, size):
     return len(s) * size * 0.85
 
 # left strip: J1 legend (two vertical columns, centred)
-text("J1 1:12V 2:GND 3:CANH 4:CANL", 101.3, 61.0, 90, 0.8)
-text("5:LIGHT 6:+5V 7:POIL 8:TOIL", 103.9, 61.0, 90, 0.8)
+text("J1 12V GND CANH CANL", 101.4, 60.0, 90, 1.0)
+text("LIGHT +5V POIL TOIL", 103.8, 60.0, 90, 1.0)
 # right strip: J2 legend + board name
-text("J2  1:GND 2:+5V 3:SCL 4:SDA", 126.8, 64.0, 90, 0.9)
-text("RV2=DIM  RV1=spare", 123.4, 64.0, 90, 0.75)
-text("GEAR DISPLAY %s" % REV, 125.1, 64.0, 90, 0.85)
+text("J2 GND +5V SCL SDA", 126.8, 60.0, 90, 1.0)
+text("RV2=DIM RV1=vrij", 123.5, 60.0, 90, 1.0)
+text("GEAR DISPLAY %s" % REV, 125.15, 60.0, 90, 1.0)
 # trimmer legend
-text("RV1 A0", 108.3, 67.0, 90, 0.9)
-text("DIM A1", 108.3, 76.0, 90, 0.9)
+text("RV1 A0", 108.4, 67.0, 90, 1.0)
+text("DIM A1", 108.4, 76.0, 90, 1.0)
 # component identification on the fab layer is handled per footprint;
 # add the full title on the back silkscreen (hidden under the CANduino)
 text("%s %s" % (TITLE, REV), 114.0, 80.0, 90, 1.0, layer="B.SilkS", mirror=True)

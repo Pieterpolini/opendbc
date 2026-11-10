@@ -115,9 +115,12 @@ add("C7", "Device:C", "100nF", "Capacitor_SMD:C_0805_2012Metric",
     118.4, 78.5, 90, "F.Cu", {1: "BRIGHT_NIGHT", 2: "GND"}, 172, 115,
     "Noise filter on the RV2 wiper, 0805")
 # --- oil pressure / temperature sensor interface (Bosch PST-F 1 class) ----
-add("R3", "Device:R", "2k2", "Resistor_SMD:R_0805_2012Metric",
+add("R3", "Device:R", "1k8", "Resistor_SMD:R_0805_2012Metric",
     102.6, 97.0, 90, "F.Cu", {1: "+5V", 2: "T_OIL"}, 60, 265,
-    "NTC pull-up - VALUE TO BE CONFIRMED against the sensor datasheet")
+    "NTC pull-up; geometric mean of 44864R at -40C and 72R at +140C")
+add("R6", "Device:R", "100k", "Resistor_SMD:R_0805_2012Metric",
+    113.5, 99.5, 0, "F.Cu", {1: "P_OIL", 2: "GND"}, 60, 300,
+    "Pull-down so a broken pressure wire reads 0 instead of floating")
 add("R4", "Device:R", "4k7", "Resistor_SMD:R_0805_2012Metric",
     102.6, 92.0, 90, "F.Cu", {1: "P_OIL", 2: "P_OIL_ADC"}, 95, 265,
     "Series resistor, limits fault current into the ADC pin to 1.5 mA")
