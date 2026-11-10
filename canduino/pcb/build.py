@@ -753,8 +753,13 @@ def tw(s, size):
     return len(s) * size * 0.85
 
 # left strip: J1 legend (two vertical columns, centred)
-text("J1 12V GND CANH CANL", 101.4, 60.0, 90, 1.0)
-text("LIGHT +5V POIL TOIL", 103.8, 60.0, 90, 1.0)
+# J1 pin labels, each centred over its own hole, staggered in two rows so
+# 2.5 mm pitch does not crowd them. Odd pins on the row nearest the housing.
+J1_LABELS = ["12V", "GND", "CANH", "CANL", "LIGHT", "+5V", "POIL", "TOIL"]
+for _i, _lbl in enumerate(J1_LABELS):
+    _x = 122.75 - 2.5 * _i                 # J1 is rotated 180: pin 1 on the right
+    _y = 103.4 if _i % 2 == 0 else 101.3   # odd pins high, even pins low
+    text(_lbl, _x, _y, 0, 1.0)
 # right strip: J2 legend + board name
 text("J2 GND +5V SCL SDA", 126.8, 60.0, 90, 1.0)
 text("RV2=DIM RV1=vrij", 123.5, 60.0, 90, 1.0)

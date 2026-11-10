@@ -28,7 +28,7 @@ NC = None
 PARTS = {}
 
 SILK_REF = {"J1", "J2"}
-REF_OFF = {"J1": 11.5, "J2": 10.0}
+REF_OFF = {"J1": 13.6, "J2": 10.0}
 
 def add(ref, lib_id, value, fp, x, y, rot, layer, nets, sx, sy, desc="", exclude_bom=False):
     PARTS[ref] = dict(ref=ref, lib_id=lib_id, value=value, fp=fp, x=x, y=y, rot=rot,
