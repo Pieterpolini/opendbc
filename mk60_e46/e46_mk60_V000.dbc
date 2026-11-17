@@ -1,0 +1,43 @@
+VERSION "e46_mk60_V000 - CANDIDATE, UNVERIFIED - confirm with log"
+
+
+NS_ :
+
+BS_:
+
+BU_: DSC DME
+
+
+BO_ 496 ASC2_WheelSpeeds: 8 DSC
+ SG_ WHEEL_SPEED_FL : 0|13@1+ (0.0625,0) [0|511] "km/h" DME
+ SG_ WHEEL_SPEED_FR : 16|13@1+ (0.0625,0) [0|511] "km/h" DME
+ SG_ WHEEL_SPEED_RL : 32|13@1+ (0.0625,0) [0|511] "km/h" DME
+ SG_ WHEEL_SPEED_RR : 48|13@1+ (0.0625,0) [0|511] "km/h" DME
+
+BO_ 339 ASC1: 8 DSC
+ SG_ VEHICLE_SPEED : 12|12@1+ (0.125,0) [0|511] "km/h" DME
+ SG_ BYTE0_RAW : 0|8@1+ (1,0) [0|255] "" DME
+ SG_ BYTE1_LOW_RAW : 8|4@1+ (1,0) [0|15] "" DME
+ SG_ BYTE3_RAW : 24|8@1+ (1,0) [0|255] "" DME
+ SG_ BYTE4_RAW : 32|8@1+ (1,0) [0|255] "" DME
+ SG_ BYTE5_RAW : 40|8@1+ (1,0) [0|255] "" DME
+ SG_ BYTE6_RAW : 48|8@1+ (1,0) [0|255] "" DME
+ SG_ BYTE7_RAW : 56|8@1+ (1,0) [0|255] "" DME
+
+BO_ 790 DME1: 8 DME
+ SG_ STATUS_BYTE0 : 0|8@1+ (1,0) [0|255] "" DSC
+ SG_ ENGINE_RPM : 16|16@1+ (0.15625,0) [0|10000] "rpm" DSC
+
+BO_ 809 DME2: 8 DME
+ SG_ BYTE0_MUX_COUNTER : 0|8@1+ (1,0) [0|255] "" DSC
+ SG_ CRUISE_BITS : 24|8@1+ (1,0) [0|255] "" DSC
+
+BO_ 1349 DME4: 8 DME
+ SG_ BYTE0_RAW : 0|8@1+ (1,0) [0|255] "" DSC
+
+
+CM_ "Candidate DBC for BMW E46 Teves MK60 standalone. All layouts from forum snippets / memory. NOT verified. See MK60_E46_handoff_V000.md";
+CM_ BO_ 496 "Wheel speeds. Candidate: 4x little-endian, low 13 bits, 1/16 km/h. Verify by rolling one wheel.";
+CM_ BO_ 339 "ASC1. Speed layout from forum. Lamp/fault bits unknown: log while unplugging one wheel sensor and diff the RAW bytes.";
+CM_ BO_ 790 "DME1, sent by MaxxECU E46 protocol. RPM = bytes 2-3 / 6.4 (forum).";
+CM_ BO_ 809 "DME2. Byte 0 reportedly critical for DSC; static content may not work.";
